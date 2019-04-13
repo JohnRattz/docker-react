@@ -5,5 +5,18 @@ services:
 before_install:
   - docker build -t johnrattz/docker-react -f Dockerfile.dev .
 
-script:
+script: # If this command returns 0, the deploy step will be run.
   - docker run johnrattz/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-166068999731"
+  bucket_path: "docker-react" # Same as `app` - the app name.
+  on: # Only deploy when the `master` branch is changed on GitHub.
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
