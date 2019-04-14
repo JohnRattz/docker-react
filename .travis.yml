@@ -23,4 +23,4 @@ deploy:
     secure: "$AWS_SECRET_KEY"
   script:
     - docker build -t johnrattz/docker-react-production -f Dockerfile .
-    - docker run -p 80:80 johnrattz/docker-react-production
+    - docker run johnrattz/docker-react-production
