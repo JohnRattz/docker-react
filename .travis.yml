@@ -17,7 +17,6 @@ deploy:
   bucket_path: "docker-react" # Same as `app` - the app name.
   on: # Only deploy when the `master` branch is changed on GitHub.
     branch: master
-  # TODO: Does this need to have a `secure` member map to $AWS_ACCESS_KEY instead?
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
