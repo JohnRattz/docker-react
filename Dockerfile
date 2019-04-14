@@ -12,5 +12,6 @@ RUN npm run build # This will create a 'build' directory in WORKDIR.
 
 # Run
 FROM nginx
-EXPOSE 3001 # This makes AWS Elastic Beanstalk expose the specified port.
+# This makes AWS Elastic Beanstalk expose the specified port.
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
