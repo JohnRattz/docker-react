@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -p 80:80 -t johnrattz/docker-react -f Dockerfile.dev .
+  - docker build -t johnrattz/docker-react -f Dockerfile.dev .
 
 script: # If this command returns 0, the deploy step will be run.
-  - docker run johnrattz/docker-react npm run test -- --coverage
+  - docker run -p 80:80 johnrattz/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
